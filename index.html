@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Release Example</title>
+  <meta http-equiv="refresh" content="15;URL=./en/"></meta>
+</head>
+<body>
+<noscript>
+  <p>After 15 seconds, automatically moves to the English page.</p>
+  <ul>
+    <li><a href="./en/">English</a></li>
+    <li><a href="./ja/">日本語</a></li>
+  </ul>
+</noscript>
+<script><!--
+const supportedLanguages = ["en", "ja"];
+
+function browserLanguage() {
+  try {
+    return (navigator.browserLanguage || navigator.language || navigator.userLanguage).substr(0,2)
+  }
+  catch(e) {
+    return undefined;
+  }
+}
+
+function index_url() {
+  var lang = browserLanguage();
+  if (!supportedLanguages.includes(lang)) {
+    lang = supportedLanguages[0];
+  }
+  return "./" + lang + "/";
+}
+window.location = index_url();
+//--></script></body></html>
